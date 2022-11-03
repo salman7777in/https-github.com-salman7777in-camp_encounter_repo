@@ -33,12 +33,10 @@
   <div class="field">
     <%= f.label :phoneNumber %><br />
     <%= f.text_field :phone_number %>
-
   </div>
   <div class="field">
     <%= f.label :country %><br />
-    <%= f.select(:country, countries_alpha2_options) %>
-
+    <%= f.select(:country, countries_alpha2_options, include_blank: '-- Select Country --') %>
   </div>
 
   <div class="actions">
