@@ -7,6 +7,7 @@ class AddDeviseToUsers < ActiveRecord::Migration[5.2]
       t.string :last_name
       t.string :phone_number
       t.string :country
+      t.string :message
 
       ## Database authenticatable
       t.string :email,              null: false, default: ""
@@ -44,7 +45,7 @@ class AddDeviseToUsers < ActiveRecord::Migration[5.2]
 
     add_index :users, :email,                unique: true
     add_index :users, :reset_password_token, unique: true
-    # add_index :users, :confirmation_token,   unique: true
+    #add_index :users, :confirmation_token,   unique: true
     # add_index :users, :unlock_token,         unique: true
   end
 

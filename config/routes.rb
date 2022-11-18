@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
+
+
   root to: "home#index"
+  get '/home/new', to: "home#privacy"
   # Home controller
   # index action
   # home folder in views

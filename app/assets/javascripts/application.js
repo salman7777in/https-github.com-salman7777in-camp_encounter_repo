@@ -11,8 +11,13 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require activestorage
-//= require turbolinks
-//= require_tree .
 //= require jquery
-// = require bootstrap-sprockets
+//= require bootstrap-sprockets
+//= require activestorage
+//= require underscore
+//= require dependent-fields
+//= require_tree .
+
+$(document).ready(function() {
+  DependentFields.bind()
+});

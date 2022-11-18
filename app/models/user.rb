@@ -1,8 +1,10 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  # :lockable, :timeoutable, :trackable and :omniauthable
+  attr_accessor :terms
+
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :confirmable
 
   validates :first_name, presence: true
   validates :email, uniqueness: { case_insensitive: true }
@@ -11,7 +13,15 @@ class User < ApplicationRecord
   validate :password_regex
   validates :phone_number, phone: { possible: true, allow_blank: true, types: [:voip, :mobile], country_specifier: -> phone { phone.country.try(:upcase) } }
 
+  validate :terms_are_accepted, on: :create
+
   private
+
+  def terms_are_accepted
+    return if self.terms.present? && self.terms.to_s == "true"
+
+    self.errors.add(:terms, " not accepted")
+  end
 
   def password_regex
     return if password.blank? || password =~ /\A(?=.*\d)(?=.*[A-Z])(?=.*\W)[^ ]{7,}\z/

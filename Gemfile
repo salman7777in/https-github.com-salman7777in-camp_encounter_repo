@@ -59,7 +59,7 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+# gem 'tzinfo-data'
 
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'sassc-rails', '>= 2.1.0'
@@ -71,3 +71,7 @@ gem 'rails-countries', '~> 1.2', '>= 1.2.2'
 # gem 'country-select', '~> 1.1', '>= 1.1.1'
 gem 'devise'
 gem 'phonelib'
+# platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'underscore-rails'
+gem 'dependent-fields-rails'
+gem "letter_opener", group: :development

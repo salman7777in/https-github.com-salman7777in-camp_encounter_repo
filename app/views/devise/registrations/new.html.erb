@@ -38,6 +38,23 @@
     <%= f.label :country %><br />
     <%= f.select(:country, countries_alpha2_options, include_blank: '-- Select Country --') %>
   </div>
+ <div class="checkbox">
+  <label>
+  <strong> By voluntarily registering on this site, you consent to:
+(i) the collection, use and disclosure by the XYZ Institutions of your personal information, including your personal health information for the purposes of: (a) institutional planning to assist with the creation (b) notification and/or delivery of other programs and services (c) statistical analysis necessary to further assist  (d) planning of or response to a natural disaster or other event deemed to be an emergency (collectively, the "Purposes"); and (ii) being contacted by the XYZ Institutions for reasons related to the Purposes. For more information please review our<%= link_to " https://ge-stage-2019.herokuapp.com/privacy_policy", home_new_path%> *<strong>
+  </label>
+</div>
+<div>
+    <%# <%= content_tag :div, class: 'js-dependent-fields', data: { 'checkbox-id': 'user_extended_profile', 'checkbox-value': 'true'} %> 
+  <%= f.radio_button :terms, true %> I Agree<br /> 
+</div>
+
+<div>
+  <%= f.radio_button :terms, false %> I Do not Agree<br />
+  <%= content_tag :div, class: 'js-dependent-fields', data: { 'radio-name': 'user[terms]', 'radio-value': 'false' } do %>
+    <strong> contact Admin at <%= mail_to "xyz@projectname.com "%><strong>
+  <% end %>
+</div>
 
   <div class="actions">
     <%= f.submit "Sign up" %>
