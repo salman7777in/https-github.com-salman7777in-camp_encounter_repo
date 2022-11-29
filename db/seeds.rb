@@ -5,5 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-admin= Admin.find_or_create_by(email: 'salman123@gmail.com', encrypted_password: 'Inspiron600#')
-puts "Created #{Admin.count} ADMIN"
+User.create(first_name: 'salman123456', country: 'PK', email: 'salman123456@gmail.com', password: 'Inspiron600#', admin: 'true', super_admin: 'true', terms: 'true'  )
+# User.find_or_create_by(email: 'salman1234@gmail.com', encrypted_password: 'Inspiron600#', admin: 'true', super_admin: 'true')
+# User.find_or_create_by(email: 'salman12345@gmail.com', encrypted_password: 'Inspiron600#', admin: 'true')
+
+puts "Created #{User.count} USER"
