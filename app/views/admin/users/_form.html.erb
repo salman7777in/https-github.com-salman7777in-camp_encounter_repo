@@ -1,0 +1,26 @@
+<%= form_with model: @user, url: url, local: true do |form|%>
+  <div>
+    <%= form.label :first_name %><br>
+    <%= form.text_field :first_name %>
+  </div>
+   <div>
+    <%= form.label :Last_name %><br>
+    <%= form.text_field :last_name %>
+  </div>
+   <div>
+    <%= form.label :Email %><br>
+    <%= form.text_field :email %>
+  </div>
+   <div>
+    <%= form.label :Country %><br>
+    <%= form.text_field :country %>
+  </div>
+   <div>
+    <%= form.label :Phone_Number %><br>
+    <%= form.text_field :phone_number %>
+  </div>
+   <div>
+    <%= form.submit%>
+    
+  </div>
+<% end %>

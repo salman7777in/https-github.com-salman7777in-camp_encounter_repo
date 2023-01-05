@@ -1,0 +1,7 @@
+<h3> Search Results</h3>
+<% @users.each do |user| %>
+  <%= user.first_name %><br>
+  <%= user.last_name %><br>
+  <%= user.email %><br>
+  <%# <%= result.id %><br> %>
+<% end %>
