@@ -2,7 +2,7 @@ class Admin::UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
 
   def index
-    @users = User
+    @users = User.order(:first_name).page(params[:page])
     return if params[:search].blank?
 
     @users = User.where(" lower(last_name) || lower(first_name) || lower(email) || id LIKE :search", search: "%#{params[:search].downcase}%") 

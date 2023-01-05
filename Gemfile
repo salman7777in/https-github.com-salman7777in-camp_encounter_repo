@@ -75,3 +75,4 @@ gem 'phonelib'
 gem 'underscore-rails'
 gem 'dependent-fields-rails'
 gem "letter_opener", group: :development
+gem "kaminari"
