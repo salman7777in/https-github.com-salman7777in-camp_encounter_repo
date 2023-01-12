@@ -1,11 +1,33 @@
 class Admin::UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
 
-  def index
-    @users = User.order(:first_name).page(params[:page])
-    return if params[:search].blank?
+  # def index
+  #   if params[:search]
+  #     @users = User.where(" lower(last_name) || lower(first_name) || lower(email) || id LIKE :search", search: "%#{params[:search].downcase}%").page(params[:page]) 
+  #   else
+  #     @users = User.order(params[:sort]).page(params[:page])
+  #   end
 
-    @users = User.where(" lower(last_name) || lower(first_name) || lower(email) || id LIKE :search", search: "%#{params[:search].downcase}%") 
+  #   # return if params[:search].blank?
+
+  # end
+  def index
+     @users = User.all
+     respond_to do |format|
+      format.html
+      format.csv { send_data @users.to_csv }
+    end
+
+     if params[:search]
+       @users = User.where(" lower(last_name) || lower(first_name) || lower(email) || id LIKE :search", search: "%#{params[:search].downcase}%").page(params[:page])
+     end
+
+     if params[:sort]
+    @users = User.order(params[:sort])
+   
+     end
+
+      @users = @users.page(params[:page])
   end
 
   def new

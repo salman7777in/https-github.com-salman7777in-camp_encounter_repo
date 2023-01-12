@@ -10,22 +10,22 @@
 <table>
   <thead>
     <tr>
-      <th> User Id &nbsp;</th>   
-      <th> First Name &nbsp;</th>
-      <th> Last Name &nbsp;</th>
-      <th> Email &nbsp;</th>
-      <th> Phone Number &nbsp;</th>
-      <th> Country &nbsp;</th>      
+      <th> <%= link_to "User Id", :sort=> "id"%> &nbsp;</th>   
+      <th> <%= link_to "First Name", :sort=> "first_name"%> &nbsp;</th>   
+      <th> <%= link_to "Last Name", :sort=> "last_name"%> &nbsp;</th>  
+      <th> <%= link_to "Email", :sort=> "email"%> &nbsp;</th>
+      <th> <%= link_to "Phone Number", :sort=> "phone_number"%> &nbsp;</th>
+      <th> <%= link_to "Country", :sort=> "country"%> &nbsp;</th>
       <th colspan="3"> Actions </th>      
 
 
     </tr>
   </thead>
   <tbody>
-    <%@users.find_each do |user|%>
+    <%@users.each do |user|%>
      <tr>
       <td> <%= user.id %>  </td>
-      <td> <%= user.first_name_with_admin %> </td>
+      <td> <%= user.first_name %> </td>
       <td> <%= user.last_name%>  </td>
       <td> <%= user.email%>  </td>
       <td> <%= user.phone_number%> &nbsp;  </td>
@@ -38,6 +38,10 @@
       <% end %>
     </tr>
     <%end%>
+    <p>
+  Download:
+  <%= link_to "CSV", admin_users_path(format: "csv") %> 
+</p>
   </tbody>
 </table>
-    <%=paginate @users %>
+    <%= paginate @users %> 
